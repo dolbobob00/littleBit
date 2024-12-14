@@ -1,0 +1,54 @@
+
+h1 {
+    color: #333;
+}
+
+.audio-container {
+
+    font-family: Arial, sans-serif;
+    background: #fdf6e3; /* Старинный желтый цвет фона */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 10px;
+    color: #333;
+
+    text-align: center;
+
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px; /* Ширина контейнера */
+    width: 100%;
+}
+
+
+.audio-info {
+    margin-bottom: 20px;
+}
+
+.audio-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+button {
+    background-color: hwb(0 7% 11%);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    background-color: #004080;
+}

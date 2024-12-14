@@ -1,0 +1,217 @@
+@import "bourbon"
+@import url('https://fonts.googleapis.com/css?family=Mirza&amp;subset=latin-ext')
+
+$bg-color: #928A97
+$front-card-color: #c72320
+$inside-card-color: #d4d1d0
+
+$card-width: 350px
+$card-height: 500px
+$card-width-tablet: 230px
+$card-height-tablet: 329px
+$card-width-mobile: 150px
+$card-height-mobile: 214px
+
+$w-tablet: 768px
+$w-mobile: 480px
+
+$easing: ease-in-out
+
+*
+  box-sizing: border-box
+
+body
+  background-color: $bg-color
+  background-image: url('https://images.pexels.com/photos/257909/pexels-photo-257909.jpeg?fit=crop&w=1920&h=1280')
+  background-repeat: no-repeat
+  background-size: cover
+  height: 100vh
+  margin: 0
+  padding: 0
+  overflow: hidden
+
+.card
+  +perspective(1500px)
+  position: absolute
+  left: calc(50% - #{$card-width/2})
+  top: calc(50% - #{$card-height/2})
+  +transition-property(transform)
+  +transition-duration(1s)
+  +transition-timing-function($ease-in-out-back)
+  +transition-delay(initial)
+  +transform(rotate(-10deg) translate(0, 0))
+  +animation(cardIn 1s alternate cubic-bezier(.87,-.41,.19,1.44))
+
+  @media (max-width: $w-tablet - 1px)
+    left: calc(50% - #{$card-width-tablet/2})
+    top: calc(50% - #{$card-height-tablet/2})
+
+  @media (max-width: $w-mobile - 1px)
+    left: calc(50% - #{$card-width-mobile/2})
+    top: calc(50% - #{$card-height-mobile/2})
+
+  &:before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    box-shadow: 0 0 50px #000
+    +transition(all .5s $easing)
+
+  &.is-opened
+    +transform(rotate(0deg) translate($card-width/2, 0))
+
+    @media (max-width: $w-tablet - 1px)
+      +transform(rotate(0deg) translate($card-width-tablet/2, 0))
+
+    @media (max-width: $w-mobile - 1px)
+      +transform(rotate(0deg) translate($card-width-mobile/2, 0))
+
+    .cart-page-front
+      +transform(rotateY(-180deg))
+
+@keyframes cardIn
+  0%
+    opacity: 0
+    +transform(rotate(-10deg) translate(0, -100%))
+  25%
+    opacity: 1
+  100%
+    opacity: 1
+    +transform(rotate(-10deg) translate(0, 0))
+
+.card,
+.card-page
+  width: $card-width
+  height: $card-height
+
+  @media (max-width: $w-tablet - 1px)
+    width: $card-width-tablet
+    height: $card-height-tablet
+
+  @media (max-width: $w-mobile - 1px)
+    width: $card-width-mobile
+    height: $card-height-mobile
+
+.card-page
+  +transition(transform 1s $easing)
+  cursor: pointer
+  position: absolute
+  outline: 1px solid transparent
+
+
+.cart-page-front
+  +transform-origin(0 50% 0)
+  +transform-style(preserve-3d)
+  +transform(rotateY(-20deg))
+  z-index: 2
+
+.cart-page-outside,
+.cart-page-inside
+  position: absolute
+  -webkit-backface-visibility: hidden
+
+.cart-page-outside
+  border: 10px solid #fbfbfb
+  background: $front-card-color url('https://www.dropbox.com/s/xsgg2exs2oparkm/front-bg.png?raw=1') no-repeat center
+  background-size: cover
+  width: 100%
+  height: 100%
+
+  @media (max-width: $w-tablet - 1px)
+    border: 5px solid #fbfbfb
+
+.cart-page-inside,
+.cart-page-bottom
+  background-color: $inside-card-color
+  background-image: url('https://www.dropbox.com/s/8hw7guch8d151kg/pattern.png?raw=1')
+  border: 20px solid $inside-card-color
+  +display(flex)
+  +justify-content(center)
+  +align-items(center)
+  text-align: center
+
+  @media (max-width: $w-tablet - 1px)
+    border: 10px solid $inside-card-color
+
+.cart-page-inside
+  +transform(rotateY(-180deg))
+  border-right: none !important
+  background-position: 0px 80px
+
+  @media (max-width: $w-tablet - 1px)
+    background-position: 0px 30px
+
+  @media (max-width: $w-mobile - 1px)
+    background-position: 0px 30px
+
+.cart-page-bottom
+  z-index: 1
+  border-left: none !important
+  background-position: -22px 80px
+
+  @media (max-width: $w-tablet - 1px)
+    background-position: 85px 30px
+
+  @media (max-width: $w-mobile - 1px)
+    background-position: 0px 30px
+
+.merry-christmas
+  +transform(rotate(-20deg))
+    
+  svg
+    width: 350px
+    height: auto
+    
+  @media (max-width: $w-tablet - 1px)
+    svg
+      width: 200px
+
+  @media (max-width: $w-mobile - 1px)
+    svg
+      width: 150px
+
+.click-icon
+  position: absolute
+  left: 50%
+  +transform(translate(-50%, 0))
+  bottom: 20px
+  +animation(iconAnimation 1s infinite alternate $easing)
+  +transition(opacity .5s $easing)
+  opacity: 1
+
+  svg
+    width: 96px
+    height: 96px
+
+    @media (max-width: $w-tablet - 1px)
+      width: 72px
+      height: 72px
+
+    @media (max-width: $w-mobile - 1px)
+      width: 48px
+      height: 48px
+
+  &.is-hidden
+    opacity: 0
+
+@keyframes iconAnimation
+  0%
+    +transform(translate(-50%, 0))
+  100%
+    +transform(translate(-50%, 10px))
+
+p
+  font-family: 'Mirza', Verdana, Arial, serif
+  font-size: 36px
+  line-height: 1.2em
+  padding-left: 10px
+
+  @media (max-width: $w-tablet - 1px)
+    font-size: 24px
+
+  @media (max-width: $w-mobile - 1px)
+    font-size: 20px
