@@ -30,26 +30,26 @@ Uses phaser.js https://phaser.io
 		load: {
 			preload: function () {
 
-				     // Установка фона для экрана загрузки
-					 this.bg = this.game.add.tileSprite(0, 0, width, height, 'snow-bg');
+				// Установка фона для экрана загрузки
+				this.bg = this.game.add.tileSprite(0, 0, width, height, 'snow-bg');
 
-					 // Иконка загрузки (анимация)
-					 this.loadingIcon = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loading-icon');
-					 this.loadingIcon.anchor.setTo(0.5, 0.5);
-					 this.game.add.tween(this.loadingIcon).to({ angle: 360 }, 2000, Phaser.Easing.Linear.None, true, 0, -1); // Крутящаяся иконка
-			 
-					 // Текст прогресса
-					 this.loadingText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 60, '0%', {
-						 font: '20px Arial',
-						 fill: '#ffffff'
-					 });
-					 this.loadingText.anchor.setTo(0.5, 0.5);
-			 
-					 // Отслеживание прогресса загрузки
-					 this.game.load.onFileComplete.add(function (progress) {
-						 this.loadingText.setText(progress + '%');
-					 }, this);
-			 
+				// Иконка загрузки (анимация)
+				this.loadingIcon = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loading-icon');
+				this.loadingIcon.anchor.setTo(0.5, 0.5);
+				this.game.add.tween(this.loadingIcon).to({ angle: 360 }, 2000, Phaser.Easing.Linear.None, true, 0, -1); // Крутящаяся иконка
+
+				// Текст прогресса
+				this.loadingText = this.game.add.text(this.game.world.centerX, this.game.world.centerY + 60, '0%', {
+					font: '20px Arial',
+					fill: '#ffffff'
+				});
+				this.loadingText.anchor.setTo(0.5, 0.5);
+
+				// Отслеживание прогресса загрузки
+				this.game.load.onFileComplete.add(function (progress) {
+					this.loadingText.setText(progress + '%');
+				}, this);
+
 
 				this.game.load.audio('drivin-home', 'assets/new_year/msc.mp3');
 				this.game.load.audio('ho-ho-ho1', 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/74196/ho-ho-ho.mp3');
@@ -139,6 +139,14 @@ Uses phaser.js https://phaser.io
 				this.emitter = this.game.add.emitter(this.game.world.centerX, -32, 50);
 
 				// Добавляем текст "Обратно на основную" в правом верхнем углу
+				this.astrogideonText = this.game.add.text(
+					this.game.world.width - 10, // Координата X: чуть левее края экрана
+					10, // Координата Y: сверху
+					'На 14560...', // Текст
+					{ font: "24px Arial", fill: "white", fontWeight: "bold", align: "right" } // Стиль текста
+				);
+				this.astrogideonText.anchor.setTo(1, 0); // Привязка текста к верхнему правому краю
+				this.astrogideonText.alpha = 0;
 
 				this.platforms = this.game.add.group();
 				this.platforms.enableBody = true;
@@ -200,7 +208,7 @@ Uses phaser.js https://phaser.io
 				}
 
 			},
-		
+
 			update: function () {
 				var that = this;
 				if (!this.isGameOver) {
@@ -265,10 +273,12 @@ Uses phaser.js https://phaser.io
 							that.lastPlatform = plat;
 						}
 					});
-					if (gameScore >= 7560) {
-						window.location.href = "test.html";  // Перенаправление на другую веб-страницу
+					if (gameScore >= 14560) {
+						window.location.href = "test2.html";  // Перенаправление на другую веб-страницу
 					}
-
+					if (gameScore >= 7560) {
+						this.astrogideonText.alpha = 1; // Показываем текст
+					}
 				}
 
 			},
@@ -293,7 +303,7 @@ Uses phaser.js https://phaser.io
 				var randomSoundKey = this.hoHoSounds[randomIndex];
 				// Проигрываем случайный звук
 				this.hoHoSound = this.game.add.audio(randomSoundKey);
-				this.hoHoSound.play();
+				this.hoHoSound.play(); this.astrogideonText.alpha = 0;
 				this.game.state.start("gameOver"); this.music.stop();
 			}
 

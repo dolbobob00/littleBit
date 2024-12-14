@@ -1,179 +1,65 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Тест по Петропавловску: 1897 - 2000</title>
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/icons.css">
-    <link rel="stylesheet" href="css/responsee.css">
-    <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="owl-carousel/owl.theme.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/style_quiz.css">
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&subset=latin,latin-ext" rel="stylesheet"
-        type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&subset=latin,latin-ext"
-        rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <title>Подарок!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="./santaGame.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* Убираем прокрутку */
+            background-color: black;
+            /* Фон для эстетики */
+        }
+
+        video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100vw;
+            /* Полная ширина экрана */
+            height: 100vh;
+            /* Полная высота экрана */
+            object-fit: cover;
+            /* Видео подгоняется по размеру экрана */
+            z-index: 1;
+        }
+    </style>
 </head>
 
-<body class="size-1140">
-    <header role="banner" class="position-absolute"><!-- Top Navigation -->
-        <!-- Top Navigation -->
-        <nav class="background-transparent background-transparent-hightlight full-width sticky">
-            <div class="s-12 l-2">
-                <a href="test2.html" class="logo">
-                    <!-- Logo White Version -->
-                    <img class="logo-white" src="assets/petroGERB.png" alt="">
-                    <!-- Logo Dark Version -->
-                    <img class="logo-dark" src="assets/skoGERB.png" alt="">
-                </a>
-            </div>
-            <div class="top-nav s-12 l-10">
+<body>
+    <video autoplay loop muted="false" id="background-video">
+        <source src="assets/new_year/Rick Astley - Never Gonna Give You Up (Official Music Video).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="credits">
+        <a href="index.html">Обратно к основной странице</a>
+        <a href="santaPage.html">Обратно к игре</a>
+    </div>
+</body>
+<script>
+    // Находим элемент видео
+    const video = document.getElementById("background-video");
 
-                <ul class="right chevron">
-                    <li><a href="index.html">Основная</a></li>
-                    <li><a>Сервисы</a>
-                        <ul>
-                            <li><a>История</a>
-                                <ul>
-                                    <li><a href="petro1740-1897.html">1740 - 1897</a></li>
-                                    <li><a href="petro1897-2000.html">1907 - 2000</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Тесты</a>
-                                <ul>
-                                    <li><a href="test.html">1740 - 1907</a></li>
-                                    <li><a href="test2.html">1907 - 2000</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="architecture.html">Архитектура</a></li>
-                    <li><a href="gallery.html">Источники</a></li>
-                    <!-- <li><a href="contact.html">Контакт</a></li> -->
-                </ul>
-            </div>
-        </nav>
-    </header><!-- MAIN -->
-    <main role="main"><!-- Content -->
-        <article>
-            <header class="section background-dark">
-                <div style="display:flex; justify-content:center; align-items:center; flex-wrap: wrap;">
-                    <div>
-                        <h1 class="text-white margin-top-bottom-0" id="top1" style="font-size:4vw; line-height: 1.2;">
-                            Тест на знание
-                            истории Петропавловска</h1>
-                        <h1 class="margin-bottom-0">1897 - 2000<br></h1><br>
-                        <h1 class="text-white margin-top-bottom-0" style="font-size:4vw; line-height: 1.2;">
-                            Пролистните
-                            чуть-чуть ниже.</h1>
-                        <a class="p2" href="test.html" style="font-size:2vw;">Или хотите отправиться к другому
-                            тесту?</a>
-                    </div>
-                    <!--        <div>
-                        <img src="assets/okarin-okabe.gif" alt="Исторический GIF"
-                            style="max-width:80%; height:auto; width:auto;">
-                    </div> -->
-                </div>
-            </header>
-            <section class="section background-yellow">
-                <h2 class="text-size-60 margin-bottom-40"></h2>
-                <div class="line" id="question-container">
-                    <h2 class="text-size-40 margin-bottom-30" id="question">=</h2>
-                    <hr class="break-small background-primary margin-bottom-30">
-                    <p class="margin-bottom-40 text-size-20 containerInfo"></p>
-                    <div id="quiz">
-                        <div class="answers">
-                            <div class="answer" onclick="selectAnswer(this,0)">HTML</div>
-                            <div class="answer" onclick="selectAnswer(this,1)">Python</div>
-                            <div class="answer" onclick="selectAnswer(this,2)">C++</div>
-                            <div class="answer" onclick="selectAnswer(this,3)">Java</div>
-                        </div><button class="next-btn" onclick="nextQuestion()">Следующий вопрос</button>
-                    </div>
-                    <div id="summary" class="hidden summary">
-                        <div id="result-container">
-                            <p id="result-text"></p>
-                        </div>
-                    </div>
-                </div><!-- Результат -->
-                <div class="line" id="other">
-                    <h2 class="text-size-40 margin-bottom-30">Куда отправимся дальше?</h2>
-                    <hr class="break-small background-primary margin-bottom-30">
-                    <p class="margin-bottom-40 text-size-20 containerInfo"></p>
-                    <div class="line text-center">
-                        <div class="margin">
-                            <div class="s-12 m-12 l-4 margin-m-bottom">
-                                <div class="padding-2x background-primary"><i
-                                        class="icon-sli-shield icon3x text-white margin-bottom-30"></i>
-                                    <h2 class="text-thin">История Петропавловска 1740 - 1897</h2>
-                                    <p class="margin-bottom-30">История старинного города.</p><a
-                                        class="button button-white-stroke text-size-12"
-                                        href="petro1740-1897.html">Погрузиться</a>
-                                </div>
-                            </div>
-                            <div class="s-12 m-12 l-4 margin-m-bottom">
-                                <div class="padding-2x background-primary"><i
-                                        class="icon-sli-home icon3x text-white margin-bottom-30"></i>
-                                    <h2 class="text-thin">На домашнюю страницу</h2>
-                                    <p class="margin-bottom-30">Тесты это конечно хорошо, а дома лучше</p><a
-                                        class="button button-white-stroke text-size-12" href="index.html">Вернуться</a>
-                                </div>
-                            </div>
-                            <div class="s-12 m-12 l-4 margin-m-bottom">
-                                <div class="padding-2x background-primary"><i
-                                        class="icon-sli-envelope icon3x text-white margin-bottom-30"></i>
-                                    <h2 class="text-thin">Тест по Петропавловску 1740 - 1897</h2>
-                                    <p class="margin-bottom-30">Стоит прежде всего прочитать историю, а потом
-                                        тестировать свои знания!</p><a class="button button-white-stroke text-size-12"
-                                        href="test.html">Попробовать</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </article>
-    </main><!-- FOOTER -->
-    <footer><!-- Contact Us -->
-        <div class="background-primary padding text-center"><a class="h1" id="test" href="test.html">Хочешь начать тест
-                заново?</a></div><!-- Main Footer -->
-        <section class="background-dark full-width"><!-- Collumn 2 -->
-            <div class="s-12 m-12 l-6 margin-m-bottom-2x">
-                <div class="padding-2x">
-                    <div class="line">
-                        <div class="float-left"><i class="icon-sli-pin text-primary icon3x"></i></div>
-                        <div class="margin-left-70 margin-bottom-30">
-                            <h3 class="margin-bottom-0">Интересный факт</h3>
-                            <p>Июль 1894 в Петропавловске встречали первый поезд. После этого
-                                начал очень стремительно
-                                расти торговый оборот города.</p>
-                        </div>
-                        <div class="float-left"><i class="icon-sli-phone text-primary icon3x"></i></div>
-                        <div class="margin-left-70 margin-bottom-30">
-                            <h3 class="margin-bottom-0">Контакты</h3>
-                            <p>Telegram : @undemorbe<br>
-                                GMail: stankovb08@gmail.com
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <hr class="break margin-top-bottom-0" style="border-color:rgba(0,38,51,.8)"><!-- Bottom Footer -->
-        <section class="padding background-dark full-width">
-            <div class="s-12 l-6"><a class="right text-size-12" href="gallery.html" title="Information">Информация и
-                    факты<br>взяты с...(нажми на меня)</a></div>
-            <!-- <div class="s-12 l-6"><a class="right text-size-12" href="/" title="???">???</a></div> -->
-        </section>
-    </footer>
-    <script type="text/javascript" src="quiz/quiz_logic2.js"></script>
-    <script type="text/javascript" src="js/responsee.js"></script>
-    <script type="text/javascript" src="owl-carousel/owl.carousel.js"></script>
-    <script type="text/javascript" src="js/owl_nv.js"></script>
+    // Попробуем включить звук и воспроизведение
+    const playVideoWithSound = async () => {
+        try {
+            video.muted = false; // Убираем mute
+            await video.play(); // Пытаемся начать воспроизведение
+            console.log("Video is playing with sound!");
+        } catch (error) {
+            console.error("Autoplay with sound failed:", error);
+        }
+    };
+
+    // Вызов функции после загрузки страницы
+    document.addEventListener("DOMContentLoaded", playVideoWithSound);
+</script>
 </body>
 
 </html>
