@@ -117,11 +117,7 @@ Uses phaser.js https://phaser.io
 				this.emitter = this.game.add.emitter(this.game.world.centerX, -32, 50);
 
 				// Добавляем текст "Обратно на основную" в правом верхнем углу
-				this.mainPageText = this.game.add.text(this.game.world.width - 300, 20, 'Обратно на основную', { font: "20px Arial", fill: "white", fontWeight: "bold" });
-				this.mainPageText.inputEnabled = true;
 
-				// Добавляем обработчик клика по тексту
-				this.mainPageText.events.onInputDown.add(this.goToMainPage, this);
 				this.platforms = this.game.add.group();
 				this.platforms.enableBody = true;
 				this.platforms.createMultiple(5, 'platform', 0, false);
@@ -182,9 +178,7 @@ Uses phaser.js https://phaser.io
 				}
 
 			},
-			goToMainPage: function () {
-				window.location.href = "index.html"; // Переход на основную страницу
-			},
+		
 			update: function () {
 				var that = this;
 				if (!this.isGameOver) {
