@@ -16,10 +16,14 @@
 
 .u-section-1 .u-image-1 {
   min-height: 500px;
-  background-image: url("images/hZX19EcWF6N94EVIs+J6IKuCgEh8WA5y97QpbR0bHQnbQ==.jpeg");
+  background-image: url("images/bula/bula1.jpg");
   background-position: 50% 50%;
 }
-
+.u-section-1 .u-image-6 {
+  min-height: 500px;
+  background-image: url("images/bula/cutie.jpg");
+  background-position: 50% 50%;
+}
 .u-section-1 .u-container-layout-1 {
   padding: 30px 60px;
 }
@@ -34,7 +38,7 @@
 
 .u-section-1 .u-image-2 {
   min-height: 250px;
-  background-image: url("images/photo-1551506337-0d3526706f8e.jpeg");
+  background-image: url("images/bula/bula2.jpg");
   background-position: 50% 50%;
 }
 
@@ -44,7 +48,7 @@
 
 .u-section-1 .u-image-3 {
   min-height: 250px;
-  background-image: url("images/photo-1439853949127-fa647821eba0.jpeg");
+  background-image: url("images/bula.jpg");
   background-position: 50% 50%;
 }
 
@@ -62,7 +66,7 @@
 
 .u-section-1 .u-image-4 {
   min-height: 500px;
-  background-image: url("images/photo-1479658744930-03854858a953.jpeg");
+  background-image: url("images/bula/cutie.jpg");
   background-position: 50% 50%;
 }
 
