@@ -45,7 +45,7 @@ a:hover {
 .msg {
   position: fixed;
   top: 10px; /* Расположение сверху */
-  right: 10px; /* Расположение справа */
+  right: 100px; /* Расположение справа */
   max-width: 250px;
   z-index: 10;
   text-align: right;
