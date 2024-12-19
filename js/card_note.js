@@ -1,8 +1,14 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Массивы с возможными картинками и текстами
     var images = [
         "assets/new_year/santa/ded1.jpg",
-        "assets/new_year/bird.png",
+        "assets/new_year/bird.png", 'assets/new_year/people/ng1bg.jpg',
+        'assets/new_year/people/ng2bg.jpg',
+        'assets/new_year/people/ng3bg.jpg',
+        'assets/new_year/people/ng4bg.jpg',
+        'assets/new_year/people/ng5bg.jpg',
+        'assets/new_year/people/ng6bg.png',
+        'assets/new_year/people/santaStopped.jpg',
         "assets/new_year/people/danya.jpg"
     ];
     const wishes = [
@@ -38,11 +44,11 @@ $(document).ready(function() {
         "С новым годом! Пусть он будет полон вдохновения, радости и тепла!"
     ];
 
-    
+
     // Выбираем случайное изображение и пожелание
     var randomImage = images[Math.floor(Math.random() * images.length)];
     var randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-    
+
     // Устанавливаем случайную картинку и текст на страницу
     $("#randomImage").attr("src", randomImage);
     $("#randomWish").text(randomWish);
@@ -50,8 +56,8 @@ $(document).ready(function() {
     // Анимация при клике по карточке
     var $clickMe = $('.click-icon'),
         $card = $('.card');
-    
-    $card.on('click', function() {
+
+    $card.on('click', function () {
         $(this).toggleClass('is-opened');
         $clickMe.toggleClass('is-hidden');
     });
